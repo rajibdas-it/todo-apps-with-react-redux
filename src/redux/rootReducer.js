@@ -1,6 +1,9 @@
-import reducer from "./todos/reducer";
+import todoReducer from "./todos/reducer";
+import filterReducer from "./filters/reducer";
 
 const rootReducer = {
-    todos:reducer,
-    filters:
-}
+  todos: todoReducer,
+  filters: filterReducer,
+};
+
+export default rootReducer;
