@@ -9,7 +9,7 @@ import {
 import initialState from "./initialState";
 
 const nextTodoId = (todos) => {
-  const maxID = todos.reducer((maxId, todo) => Math.max(todo.id, maxId), 0);
+  const maxID = todos.reduce((todo, max) => Math.max(todo.id, max), -1);
   return maxID + 1;
 };
 
@@ -21,6 +21,7 @@ const reducer = (state = initialState, action) => {
         {
           id: nextTodoId(state),
           text: action.payload,
+          completed: false,
         },
       ];
 
