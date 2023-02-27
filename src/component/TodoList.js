@@ -5,7 +5,7 @@ import Todo from "./Todo";
 const TodoList = () => {
   const todos = useSelector((state) => state.todos);
   const filters = useSelector((state) => state.filters);
-  console.log(todos);
+  // console.log(todos);
   return (
     <div className="mt-2 text-gray-700 text-sm max-h-[300px] overflow-y-auto">
       {todos
@@ -20,6 +20,13 @@ const TodoList = () => {
             default:
               return true;
           }
+        })
+        .filter((todo) => {
+          const { colors } = filters;
+          if (colors.length > 0) {
+            return colors.includes(todo.color);
+          }
+          return true;
         })
         .map((todo) => (
           <Todo key={todo.id} todo={todo} />
